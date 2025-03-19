@@ -38,7 +38,7 @@ const Add = ({url}) => {
     data.append('price', formData.price);
 
     try {
-      const response = await axios.post(`₹{url}/api/food/add`, data, {
+      const response = await axios.post(`${url}/api/food/add`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -142,7 +142,7 @@ const Add = ({url}) => {
             <input
               type="number"
               name="price"
-              placeholder="$20"
+              placeholder="₹20"
               value={formData.price}
               onChange={handleInputChange}
               required

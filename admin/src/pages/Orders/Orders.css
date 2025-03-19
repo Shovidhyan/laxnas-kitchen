@@ -90,9 +90,8 @@
   p {
     margin: 5px 0;
   }
-
-
-  /* Responsive styles for mobile screens */
+  
+    /* Responsive styles for mobile screens */
 @media (max-width: 768px) {
   .order-item {
     flex-direction: column;
@@ -126,4 +125,3 @@
     font-size: 12px;
   }
 }
-  

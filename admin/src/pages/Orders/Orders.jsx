@@ -7,24 +7,13 @@ import { assets } from '../../assets/assets';
 const Orders = ({ url }) => {
   const [orders, setOrders] = useState([]);
 
-  // Fetch all orders
   const fetchAllOrders = async () => {
     try {
       const response = await axios.get(url + "/api/order/list");
 
       if (response.data.success) {
-        // Sort orders in descending order (e.g., by date or _id)
-        const sortedOrders = response.data.data.sort((a, b) => {
-          return new Date(b.date) - new Date(a.date); // Replace 'date' with the appropriate field
-        });
-        setOrders(sortedOrders);
-
-        // Check for new orders and send email notifications
-        sortedOrders.forEach((order) => {
-          if (order.status === "Food Processing") {
-            sendEmailNotification(order);
-          }
-        });
+        setOrders(response.data.data);
+        console.log(response.data.data);
       } else {
         toast.error("Failed to fetch orders");
       }
@@ -36,12 +25,11 @@ const Orders = ({ url }) => {
 
 
 
-  // Handle order status change
-  const statusHandler = async (event, orderId) => {
+  const statusHandler = async (event,orderId) => {
     const response = await axios.post(url + "/api/order/status", {
       orderId: orderId,
-      status: event.target.value,
-    });
+      status: event.target.value
+    }); 
     if (response.data.success) {
       await fetchAllOrders();
     }
@@ -59,28 +47,28 @@ const Orders = ({ url }) => {
           <div key={index} className="order-item">
             <img src={assets.parcel_icon} alt="Parcel Icon" />
             <div>
-              <p className="order-item-food">
-                {order.items &&
-                  order.items.map((item, i) =>
-                    `${item.name} x ${item.quantity}${i !== order.items.length - 1 ? ", " : ""}`
-                  )}
+              <p className='order-item-food'>
+                {order.items && order.items.map((item, i) =>
+                  `${item.name} x ${item.quantity}${i !== order.items.length - 1 ? ', ' : ''}`
+                )}
               </p>
               <p className="order-item-name">
-                {order.address.firstName + " " + order.address.lastName}
+                {order.address.firstName+" "+order.address.lastName};
               </p>
 
               <div className="order-item-address">
-                <p>{order.address.street + ","}</p>
-                <p>{order.address.city + "," + order.address.state + "," + order.address.zip}</p>
+                <p>{order.address.street+","}</p>
+                <p>{order.address.city+","+order.address.state+","+order.address.zip}</p>
+                
               </div>
               <div className="order-item-phone">
-                <p>{order.address.phone}</p>
+              <p>{order.address.phone}</p>
               </div>
 
               <p>Items : {order.items.length}</p>
               <p>₹{order.amount}</p>
 
-              <select onChange={(event) => statusHandler(event, order._id)} value={order.status}>
+              <select onChange={(event) => statusHandler(event,order._id)} value={order.status}>
                 <option value="Food Processing">Food Processing</option>
                 <option value="Out for delivery">Out for delivery</option>
                 <option value="Delivered">Delivered</option>
