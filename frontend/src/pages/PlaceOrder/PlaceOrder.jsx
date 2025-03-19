@@ -4,7 +4,7 @@ import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
 
 const PlaceOrder = () => {
-  const { getTotalCartAmount, token, food_list, cartItems, url } =
+  const { getTotalCartAmount, token, food_list, cartItems, url, setCartItems } =
     useContext(StoreContext);
 
   const [data, setData] = useState({
@@ -33,6 +33,7 @@ const PlaceOrder = () => {
       setPopup({ show: false, message: "", success: false });
       if (success) {
         setOrderPlaced(true); // Move to the orderPlaced section after the popup
+        setCartItems({}); // Clear the basket after the order is placed
       }
     }, 3000); // Hide the popup after 3 seconds
   };
@@ -57,14 +58,12 @@ const PlaceOrder = () => {
         await axios.post(url + "/api/notify-owner", { orderData });
         showPopup("Order Placed Successfully!", true); // Show success popup
       } else {
-        showPopup("Order Placed Successfully!", true);  // Show failure popup
+        showPopup("Order Placed Successfully!", true); // Show failure popup
       }
     } catch (error) {
       showPopup("Error placing order. Please try again.", false); // Show error popup
     }
   };
-
- 
 
   return (
     <div>

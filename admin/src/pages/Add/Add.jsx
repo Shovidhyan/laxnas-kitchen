@@ -38,7 +38,7 @@ const Add = ({url}) => {
     data.append('price', formData.price);
 
     try {
-      const response = await axios.post(`${url}/api/food/add`, data, {
+      const response = await axios.post(`₹{url}/api/food/add`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

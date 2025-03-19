@@ -90,3 +90,36 @@ h2{
       opacity: 0;
     }
   }
+
+
+/* Responsive styles for mobile screens */
+@media (max-width: 768px) {
+  .place-order {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .place-order-left,
+  .place-order-right {
+    width: 100%;
+  }
+
+  .place-order-left .multi-fields {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .place-order-right {
+    margin-top: 20px;
+  }
+
+  .cart-total-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+}

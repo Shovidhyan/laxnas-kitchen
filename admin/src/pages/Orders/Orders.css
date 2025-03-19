@@ -90,4 +90,40 @@
   p {
     margin: 5px 0;
   }
+
+
+  /* Responsive styles for mobile screens */
+@media (max-width: 768px) {
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .order-item div {
+    width: 100%;
+  }
+
+  .order-item-food {
+    font-size: 14px;
+  }
+
+  .order-item-name {
+    font-size: 12px;
+  }
+
+  .order-item-address p,
+  .order-item-phone p {
+    font-size: 10px;
+  }
+
+  select {
+    width: 100%;
+    font-size: 12px;
+  }
+}
   

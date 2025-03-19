@@ -32,3 +32,46 @@
     }
 }
 
+/* Responsive styles for mobile screens */
+@media (max-width: 768px) {
+    .list {
+      padding: 10px;
+    }
+  
+    .list-table-format {
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: auto auto auto;
+      gap: 5px;
+      text-align: left;
+    }
+  
+    .list-table-format img {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .list-table-format.title {
+      display: none; /* Hide the title row on mobile */
+    }
+  
+    .list-table-format > p:nth-child(2)::before {
+      content: "Name: ";
+      font-weight: bold;
+    }
+  
+    .list-table-format > p:nth-child(3)::before {
+      content: "Category: ";
+      font-weight: bold;
+    }
+  
+    .list-table-format > p:nth-child(4)::before {
+      content: "Price: ";
+      font-weight: bold;
+    }
+  
+    .list-table-format > p:nth-child(5)::before {
+      content: "Action: ";
+      font-weight: bold;
+    }
+  }
+

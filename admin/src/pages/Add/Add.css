@@ -71,3 +71,34 @@
 .add button:hover {
     background-color: #5a5a5a;
 }
+
+
+@media (max-width: 768px) {
+    .add {
+      padding: 10px;
+    }
+  
+    .add form {
+      gap: 15px;
+    }
+  
+    .add-img-upload img {
+      max-width: 150px;
+      max-height: 150px;
+    }
+  
+    .add-category-price {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .add-category,
+    .add-category-price {
+      width: 100%;
+    }
+  
+    .add-button {
+      width: 100%;
+      padding: 12px;
+    }
+  }
